@@ -57,8 +57,19 @@ namespace ShoppingWebsite
                         Response.Cookies["UPWD"].Expires = DateTime.Now.AddDays(-1);
                     }
 
-                    Session["Username"] = txtUsername.Text;
-                    Response.Redirect("~/UserHome.aspx");
+                    string Utype;
+                    Utype = dt.Rows[0][5].ToString().Trim();
+
+                    if (Utype == "User")
+                    {
+                        Session["Username"] = txtUsername.Text;
+                        Response.Redirect("~/UserHome.aspx");
+                    }
+                    if (Utype == "Admin")
+                    {
+                        Session["Username"] = txtUsername.Text;
+                        Response.Redirect("~/AdminHome.aspx");
+                    }
                 }
                 else
                 {
